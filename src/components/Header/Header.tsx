@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
         </div>
         <nav className={styles.nav}>
           <ul className={`${styles["nav__list"]}`}>
-            <li className={`${styles["nav__item"]}`}>
+            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
                 Home
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`}>
+            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
                 Phones
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`}>
+            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
                 Tablets
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`}>
+            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
