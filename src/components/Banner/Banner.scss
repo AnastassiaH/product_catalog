@@ -64,7 +64,10 @@
 }
 
 .slick-arrow {
+  display: none!important;
+
   @include on-tablet {
+    display: block!important;
     height: calc(100% - 38px);
     width: 32px;
     box-sizing: border-box;
@@ -82,23 +85,27 @@
 }
 
 .slick-next {
-  right: 0;
-  background-image: url(../../../public/img/icons/icon-right.svg);
-
-  &:hover {
+  @include on-tablet {
+    right: 0;
     background-image: url(../../../public/img/icons/icon-right.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+
+    &:hover {
+      background-image: url(../../../public/img/icons/icon-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 }
 
 .slick-prev {
-  left: 0;
-  background-image: url(../../../public/img/icons/icon-left.svg);
-
-  &:hover {
+  @include on-tablet {
+    left: 0;
     background-image: url(../../../public/img/icons/icon-left.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+
+    &:hover {
+      background-image: url(../../../public/img/icons/icon-left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
 }
