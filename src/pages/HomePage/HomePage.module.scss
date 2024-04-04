@@ -1,0 +1,21 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.wrapper {
+    @include on-tablet {
+        padding-inline: $content-padding-tablet;
+    }
+}
+
+.title {
+  font-family: Mont-Bold;
+  font-size: 32px;
+  line-height: 41px;
+  margin-block: 24px;
+  padding-inline: $content-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: 0;
+  }
+}
