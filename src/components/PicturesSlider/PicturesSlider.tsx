@@ -2,9 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./Banner.scss";
+import "./PicturesSlider.scss";
 
-export const Banner: React.FC = () => {
+export const PicturesSlider: React.FC = () => {
   const imageArray = [
     `${process.env.PUBLIC_URL}/img/banner-phones.png`,
     `${process.env.PUBLIC_URL}/img/banner-tablets.png`,
@@ -19,7 +19,7 @@ export const Banner: React.FC = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="container">
+    <div className="banner-container">
       <Slider {...settings}>
         {imageArray.map((image) => (
           <div key={image} className="image-container">
