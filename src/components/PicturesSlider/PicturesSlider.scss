@@ -28,11 +28,16 @@
   @include on-tablet {
     width: 100%;
     height: auto;
+    max-height: 400px;
     object-position: 0;
   }
 }
 
 .banner-container {
+  @include on-desktop {
+    max-width: 1136px;
+  }
+
   .slick-slider {
     height: 100%;
     position: static;

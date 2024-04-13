@@ -3,9 +3,14 @@
 @import "../../styles/mixins";
 
 .wrapper {
-    @include on-tablet {
-        padding-inline: $content-padding-tablet;
-    }
+  @include on-tablet {
+    padding-inline: $content-padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
 }
 
 .title {

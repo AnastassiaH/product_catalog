@@ -8,21 +8,24 @@ import { PhonesPage } from "./pages/PhonesPage";
 import { CartPage } from "./pages/CartPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ProductsProvider } from "./context/ProductsContext";
 
 export const Root = () => (
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="phones" element={<PhonesPage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="favorites" element={<FavoritesPage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <ProductsProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path="tablets" element={<TabletsPage />} />
+            <Route path="phones" element={<PhonesPage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="favorites" element={<FavoritesPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </ProductsProvider>
   </React.StrictMode>
 );
