@@ -1,0 +1,84 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  width: 176px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid $elements;
+  padding-inline: 12px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+  font-family: Mont-SemiBold;
+  background-color: transparent;
+  outline: none;
+
+  @include hover('border-color', $secondary)
+}
+
+.dropdownContent {
+  position: absolute;
+  margin-top: 4px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: all 0.2s;
+}
+
+.content {
+    list-style-type: none;
+    margin: 0;
+
+    border: 1px solid $elements; 
+    box-sizing: border-box;
+    padding: 4px 12px 8px 12px;
+    width: 176px;
+}
+
+.option {
+    font-family: Mont-Regular;
+    font-size: 14px;
+    line-height: 21px;
+    height: 32px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: $secondary;
+
+    @include hover('color', $primary)
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.arrowUp {
+    background-image: url(../../../public/img/icons/icon-arrow-up-light.svg);
+}
+
+.arrowDown {
+    background-image: url(../../../public/img/icons/icon-arrow-down.svg);
+}

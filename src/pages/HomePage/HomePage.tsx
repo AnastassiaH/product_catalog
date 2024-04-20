@@ -48,6 +48,18 @@ export const HomePage: React.FC = () => {
     [goods]
   );
 
+  const tabletsAmount = useMemo(
+    () =>
+      goods ? goods.filter((good) => good.category === "tablets").length : null,
+    [goods]
+  );
+
+  const accessoriesAmount = useMemo(
+    () =>
+      goods ? goods.filter((good) => good.category === "accessories").length : null,
+    [goods]
+  );
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -82,7 +94,7 @@ export const HomePage: React.FC = () => {
                 alt="tablets"
               />
               <p className={styles["category-title"]}>Tablets</p>
-              <p className={styles["category-amount"]}>{phonesAmount} models</p>
+              <p className={styles["category-amount"]}>{tabletsAmount} models</p>
             </div>
           </NavLink>
           <NavLink className={styles.categoryLink} to="accessories">
@@ -93,7 +105,7 @@ export const HomePage: React.FC = () => {
                 alt="accessories"
               />
               <p className={styles["category-title"]}>Accessories</p>
-              <p className={styles["category-amount"]}>{phonesAmount} models</p>
+              <p className={styles["category-amount"]}>{accessoriesAmount} models</p>
             </div>
           </NavLink>
         </div>

@@ -38,3 +38,9 @@ export type Product = {
   ram: string;
   year: number;
 };
+
+export enum SortByOptions {
+  Newest = 'Newest',
+  Alphabetically = 'Alphabetically',
+  Cheapest = 'Cheapest'
+}
