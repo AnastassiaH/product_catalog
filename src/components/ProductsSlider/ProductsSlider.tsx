@@ -5,30 +5,34 @@ import "slick-carousel/slick/slick-theme.css";
 import "./ProductsSlider.scss";
 import { ProductsContext } from "../../context/ProductsContext";
 import { ProductCard } from "../ProductCard";
+import { Product } from "../../types";
+import { Loader } from "../Loader";
 
-export const ProductsSlider = () => {
-  const { goods } = useContext(ProductsContext);
-  const preparedGoods = goods
-    ? [...goods].sort((a, b) => b.fullPrice - a.fullPrice).slice(0, 10)
-    : [];
+type Props = {
+  goods: Product[],
+  isLoading: boolean
+}
+
+export const ProductsSlider: React.FC<Props> = ({ goods, isLoading }) => {
 
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
   };
 
-  console.log(preparedGoods);
+  if (isLoading) {
+    return (<Loader />)
+  } 
 
   return (
-    <div className="products-container">
-      <h2 className="products-title">Brand new models</h2>
-      {preparedGoods.length && (
+    <>
+      {goods.length && (
         <div className="slider-container">
           <Slider {...settings}>
-            {preparedGoods.map((good) => (
+            {goods.map((good) => (
               <div key={good.id} className="slider-item">
                 <ProductCard product={good} />
               </div>
@@ -36,6 +40,6 @@ export const ProductsSlider = () => {
           </Slider>
         </div>
       )}
-    </div>
+    </>
   );
 };

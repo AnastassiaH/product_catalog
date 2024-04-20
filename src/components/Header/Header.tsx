@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <div className={`${styles['header--mobile']}`}>
+      <div className={styles['header--mobile']}>
         <div className={styles.top}>
           <Link className={styles.logoLink} to="/">
             <img src={logoUrl} alt="" />
@@ -38,8 +38,8 @@ export const Header: React.FC = () => {
           </button>
         </div>
         <nav className={styles.nav}>
-          <ul className={`${styles["nav__list"]}`}>
-            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
+          <ul className={styles["nav__list"]}>
+            <li className={styles["nav__item"]} onClick={toggleMenu}>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
                 Home
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
+            <li className={styles["nav__item"]} onClick={toggleMenu}>
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
                 Phones
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
+            <li className={styles["nav__item"]} onClick={toggleMenu}>
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
                 Tablets
               </NavLink>
             </li>
-            <li className={`${styles["nav__item"]}`} onClick={toggleMenu}>
+            <li className={styles["nav__item"]} onClick={toggleMenu}>
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <div className={`${styles["menu__icons"]}`}>
+        <div className={styles["menu__icons"]}>
         <NavLink
                 to="/favorites"
                 className={({ isActive }) =>
