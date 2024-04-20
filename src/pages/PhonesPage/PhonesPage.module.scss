@@ -1,0 +1,56 @@
+@import "../../styles/fonts";
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  box-sizing: border-box;
+  padding-inline: $content-padding-mobile;
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-inline: $content-padding-tablet;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.pageHeading {
+  font-family: Mont-Bold;
+  font-size: 32px;
+  line-height: 41px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: $primary;
+  box-sizing: border-box;
+}
+
+.amount {
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.dropdowns {
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+}
+
+.sortByContainer {
+  width: 136px;
+  height: 40px;
+
+  @include on-tablet {
+    width: 187px;
+  }
+}
+.itemsOnPageContainer {
+  width: 136px;
+  height: 40px;
+}

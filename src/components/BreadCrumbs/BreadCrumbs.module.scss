@@ -1,0 +1,9 @@
+@import "../../styles/vars";
+@import "../../styles/fonts";
+@import '../../styles/mixins';
+
+.container {
+    padding: 12px;
+    font-size: 12px;
+    box-sizing: border-box;
+}

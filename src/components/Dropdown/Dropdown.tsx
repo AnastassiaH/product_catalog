@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Dropdown.module.scss";
-import { SortByOptions } from "../../types";
 
 type Props = {
-  sortBy: SortByOptions;
-  setSortBy: (sortBy: SortByOptions) => void;
+  value: string;
+  setValue: (sortBy: string) => void;
+  options: any[];
 };
 
-export const Dropdown: React.FC<Props> = ({ sortBy, setSortBy }) => {
+export const Dropdown: React.FC<Props> = ({ value, setValue, options }) => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleDropdown = () => {
@@ -16,8 +16,8 @@ export const Dropdown: React.FC<Props> = ({ sortBy, setSortBy }) => {
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.dropdownTrigger} onClick={toggleDropdown}>
-        {sortBy}
+      <button className={styles.dropdownTrigger} onClick={toggleDropdown} onBlur={toggleDropdown}>
+        {value}
         <span
           className={`${styles.icon} ${
             isActive ? styles.arrowUp : styles.arrowDown
@@ -29,33 +29,12 @@ export const Dropdown: React.FC<Props> = ({ sortBy, setSortBy }) => {
         className={`${styles.dropdownContent} ${isActive ? styles.active : ""}`}
       >
         <ul className={styles.content}>
-          <li
-            className={styles.option}
-            onClick={() => {
+          {options.map((option) => (
+            <li className={styles.option} onClick={() => {
               toggleDropdown();
-              setSortBy(SortByOptions.Newest);
-            }}
-          >
-            Newest
-          </li>
-          <li
-            className={styles.option}
-            onClick={() => {
-              toggleDropdown();
-              setSortBy(SortByOptions.Alphabetically);
-            }}
-          >
-            Alphabetically
-          </li>
-          <li
-            className={styles.option}
-            onClick={() => {
-              toggleDropdown();
-              setSortBy(SortByOptions.Cheapest);
-            }}
-          >
-            Cheapest
-          </li>
+              setValue(option);
+            }}>{option}</li>
+          ))}
         </ul>
       </div>
     </div>
