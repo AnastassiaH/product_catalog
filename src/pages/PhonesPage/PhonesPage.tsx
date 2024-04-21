@@ -4,6 +4,7 @@ import { getPhones } from "../../services/phones";
 import { Phone, SortByOptions } from "../../types";
 import { Dropdown } from "../../components/Dropdown/Dropdown";
 import { Breadcrumbs } from "../../components/BreadCrumbs";
+import { ProductCard } from "../../components/ProductCard";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -46,6 +47,11 @@ export const PhonesPage = () => {
             options={itemsOnPageOptions}
           />
         </div>
+      </div>
+      <div className={styles.phonesList}>
+        {phones.map((phone) => (<div className={styles.phone} key={phone.id}>
+          <ProductCard product={phone}/>
+        </div>))}
       </div>
     </div>
   );

@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: row;
   column-gap: 16px;
+  margin-bottom: 24px;
 }
 
 .sortByContainer {
@@ -53,4 +54,10 @@
 .itemsOnPageContainer {
   width: 136px;
   height: 40px;
+}
+
+.phonesList{
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
 }

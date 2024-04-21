@@ -1,23 +1,30 @@
 import React from "react";
 import styles from "./ProductCard.module.scss";
-import { Product } from "../../types";
+import { Phone, Product } from "../../types";
 
 type Props = {
-  product: Product;
+  product: Product | Phone;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const image = "image" in product ? product.image : product.images[0];
+  const price = "price" in product ? product.price : product.priceDiscount;
+  const fullPrice =
+    "fullPrice" in product ? product.fullPrice : product.priceRegular;
+  const titleHeight = "image" in product ? "63px" : "42px";
+
   return (
     <div className={styles.container}>
       <div className={styles["image-container"]}>
-        <img src={product.image} alt="" />
-        
+        <img src={image} alt="" />
       </div>
-      <p className={styles.title}>{product.name}</p>
+      <p className={styles.title} style={{ height: titleHeight }}>
+        {product.name}
+      </p>
       <div className={styles.prices}>
-        <p className={styles.price}>${product.price}</p>
+        <p className={styles.price}>${price}</p>
         <p className={styles["full-price"]}>
-          {product.fullPrice === 0 || `$${product.fullPrice}`}
+          {fullPrice === 0 || `$${fullPrice}`}
         </p>
       </div>
       <div className={styles.divider}></div>
