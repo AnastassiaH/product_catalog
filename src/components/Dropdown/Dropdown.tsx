@@ -16,7 +16,7 @@ export const Dropdown: React.FC<Props> = ({ value, setValue, options }) => {
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.dropdownTrigger} onClick={toggleDropdown} onBlur={toggleDropdown}>
+      <button className={styles.dropdownTrigger} onClick={toggleDropdown} onBlur={() => setIsActive(false)}>
         {value}
         <span
           className={`${styles.icon} ${
@@ -30,8 +30,8 @@ export const Dropdown: React.FC<Props> = ({ value, setValue, options }) => {
       >
         <ul className={styles.content}>
           {options.map((option) => (
-            <li className={styles.option} onClick={() => {
-              toggleDropdown();
+            <li className={styles.option} key={option} onClick={() => {
+              setIsActive(false);
               setValue(option);
             }}>{option}</li>
           ))}
