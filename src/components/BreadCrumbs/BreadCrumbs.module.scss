@@ -3,7 +3,6 @@
 @import "../../styles/mixins";
 
 .container {
-  padding: 12px;
   font-size: 12px;
   box-sizing: border-box;
   display: flex;
@@ -38,9 +37,11 @@
   font-size: 12px;
   line-height: 16px;
   font-family: Mont-Regular;
+  margin-right: 8px;
+  color: $primary;
 }
 
-.breadcrumbLink:last-child {
-    color: $secondary;
-    cursor: default;
+.breadcrumb {
+  text-decoration: none;
+  color: $secondary;
 }

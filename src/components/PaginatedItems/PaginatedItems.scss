@@ -17,8 +17,10 @@
 }
 
 .productsList::after {
-  content: "";
-  flex: auto;
+  @include on-tablet {
+    content: "";
+    flex: auto;
+  }
 }
 
 .itemCard {

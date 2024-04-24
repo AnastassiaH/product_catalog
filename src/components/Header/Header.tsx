@@ -12,28 +12,22 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <div className={styles['header--mobile']}>
+      <div className={styles["header--mobile"]}>
         <div className={styles.top}>
           <Link className={styles.logoLink} to="/">
             <img src={logoUrl} alt="" />
           </Link>
-          <button
-            onClick={toggleMenu}
-            className={styles.button}
-          >
+          <button onClick={toggleMenu} className={styles.button}>
             <span className={`${styles.icon} ${styles["icon--menu"]}`}></span>
           </button>
         </div>
       </div>
       <aside className={`${styles.menu} ${isActive ? styles.active : ""}`}>
         <div className={styles.top}>
-          <Link className={styles.logoLink} to="/">
+          <Link className={styles.logoLink} to="/" onClick={toggleMenu}>
             <img src={logoUrl} alt="" />
           </Link>
-          <button
-            onClick={toggleMenu}
-            className={styles.button}
-          >
+          <button onClick={toggleMenu} className={styles.button}>
             <span className={`${styles.icon} ${styles["icon--close"]}`}></span>
           </button>
         </div>
@@ -43,7 +37,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
+                  `${styles["nav__link"]} ${
+                    isActive ? styles["nav__link--active"] : ""
+                  }`
                 }
               >
                 Home
@@ -53,7 +49,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
+                  `${styles["nav__link"]} ${
+                    isActive ? styles["nav__link--active"] : ""
+                  }`
                 }
               >
                 Phones
@@ -63,7 +61,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
+                  `${styles["nav__link"]} ${
+                    isActive ? styles["nav__link--active"] : ""
+                  }`
                 }
               >
                 Tablets
@@ -73,7 +73,9 @@ export const Header: React.FC = () => {
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
+                  `${styles["nav__link"]} ${
+                    isActive ? styles["nav__link--active"] : ""
+                  }`
                 }
               >
                 Accessories
@@ -82,20 +84,24 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
         <div className={styles["menu__icons"]}>
-        <NavLink
-                to="/favorites"
-                className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
-                }
-              >
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              `${styles["nav__link"]} ${
+                isActive ? styles["nav__link--active"] : ""
+              }`
+            }
+          >
             <span className={`${styles.icon} ${styles["icon--heart"]}`}></span>
           </NavLink>
           <NavLink
-                to="/cart"
-                className={({ isActive }) =>
-                  `${styles["nav__link"]} ${isActive ? styles["nav__link--active"] : ""}`
-                }
-              >
+            to="/cart"
+            className={({ isActive }) =>
+              `${styles["nav__link"]} ${
+                isActive ? styles["nav__link--active"] : ""
+              }`
+            }
+          >
             <span className={`${styles.icon} ${styles["icon--cart"]}`}></span>
           </NavLink>
         </div>

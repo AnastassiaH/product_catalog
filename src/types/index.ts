@@ -1,9 +1,4 @@
-type PhoneDescription = {
-  title: string;
-  text: string[];
-};
-
-export type Phone = {
+export type ProductDetailed = {
   id: string;
   namespaceId: string;
   name: string;
@@ -14,7 +9,10 @@ export type Phone = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: PhoneDescription[];
+  description: {
+    title: string,
+    text: string[],
+  };
   screen: string;
   resolution: string;
   processor: string;

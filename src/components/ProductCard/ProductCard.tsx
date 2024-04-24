@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { Product } from "../../types";
 
@@ -7,14 +8,15 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+
   return (
     <div className={styles.container}>
-      <div className={styles["image-container"]}>
-        <img src={product.image} alt="" />
-      </div>
-      <p className={styles.title} >
-        {product.name}
-      </p>
+      <Link to={`/${product.category}/${product.itemId}`} className={styles.productLink}>
+        <div className={styles["image-container"]}>
+          <img src={product.image} alt="" />
+        </div>
+        <p className={styles.title}>{product.name}</p>
+      </Link>
       <div className={styles.prices}>
         <p className={styles.price}>${product.price}</p>
         <p className={styles["full-price"]}>
@@ -36,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <p className={styles.value}>{product.ram}</p>
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div className={styles.actions}>
         <button className={styles.cart}>Add to cart</button>
         <button className={styles.favorite}></button>
       </div>

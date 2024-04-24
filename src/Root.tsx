@@ -9,6 +9,7 @@ import { CartPage } from "./pages/CartPage";
 import { FavoritesPage } from "./pages/FavoritesPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProductsProvider } from "./context/ProductsContext";
+import { ProductDetailsPage } from "./pages/ProductDetailsPage/ProductDetailsPage";
 
 export const Root = () => (
   <React.StrictMode>
@@ -17,9 +18,15 @@ export const Root = () => (
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path="accessories">
+              <Route index element={<AccessoriesPage />} />
+              <Route path=":productId?" element={<ProductDetailsPage />} />
+            </Route>
             <Route path="tablets" element={<TabletsPage />} />
-            <Route path="phones" element={<PhonesPage />} />
+            <Route path="phones" > 
+              <Route index element={<PhonesPage />} />
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
             <Route path="cart" element={<CartPage />} />
             <Route path="favorites" element={<FavoritesPage />} />
           </Route>
