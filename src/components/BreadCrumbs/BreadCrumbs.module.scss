@@ -1,9 +1,46 @@
 @import "../../styles/vars";
 @import "../../styles/fonts";
-@import '../../styles/mixins';
+@import "../../styles/mixins";
 
 .container {
-    padding: 12px;
-    font-size: 12px;
-    box-sizing: border-box;
+  padding: 12px;
+  font-size: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.homeIcon {
+  display: inline-block;
+  background-image: url(../../../public/img/icons/home-icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.arrowIcon {
+  display: inline-block;
+  background-image: url(../../../public/img/icons/icon-right-disabled.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.breadcrumbLink {
+  text-decoration: none;
+  color: $primary;
+  font-size: 12px;
+  line-height: 16px;
+  font-family: Mont-Regular;
+}
+
+.breadcrumbLink:last-child {
+    color: $secondary;
+    cursor: default;
 }

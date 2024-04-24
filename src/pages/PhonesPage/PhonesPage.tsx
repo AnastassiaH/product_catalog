@@ -19,8 +19,6 @@ export const PhonesPage: React.FC = () => {
 
   const sortBy = searchParams.get("sort") || "age";
   const perPage = searchParams.get("perPage");
-  const currPage = searchParams.get("page") || "1";
-  const { pathname, search } = useLocation();
 
   useEffect(() => {
     if (!goods) {

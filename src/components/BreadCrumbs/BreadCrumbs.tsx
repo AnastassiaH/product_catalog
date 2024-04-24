@@ -1,10 +1,23 @@
-import React from "react"
-import styles from './BreadCrumbs.module.scss'
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import styles from "./BreadCrumbs.module.scss";
 
-export const Breadcrumbs = () =>{
-    return (
-        <div className={styles.container}>
-            BreadCrumbs
-        </div>
-    )
-}
+type Props = {
+    details?: string;
+};
+
+export const Breadcrumbs: React.FC<Props> = ({ details }) => {
+  const { pathname } = useLocation();
+  const category = pathname.split("/")[1];
+  const categoryWord = category.charAt(0).toUpperCase() + category.slice(1);
+
+  return (
+    <div className={styles.container}>
+      <NavLink to="/" className={styles.homeIcon}></NavLink>
+      <span className={styles.arrowIcon}></span>
+      <NavLink aria-disabled={!details} to={`/${category}`} className={styles.breadcrumbLink}>
+        {categoryWord}
+      </NavLink>
+    </div>
+  );
+};

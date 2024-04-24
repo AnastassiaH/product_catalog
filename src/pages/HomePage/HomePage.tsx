@@ -21,12 +21,15 @@ export const HomePage: React.FC = () => {
   const categoryAccessories = `${process.env.PUBLIC_URL}/img/category-accessories.png`;
 
   useEffect(() => {
-    setIsLoading(true);
-    getProducts()
-      .then(setGoods)
-      .finally(() => setIsLoading(false));
+    if (!goods) {
+      setIsLoading(true);
+      getProducts()
+        .then(setGoods)
+        .catch()
+        .finally(() => setIsLoading(false));
+    }
   }, []);
-
+  
   const brandNewGoods = useMemo(
     () =>
       goods
