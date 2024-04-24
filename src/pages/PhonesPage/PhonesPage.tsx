@@ -61,7 +61,7 @@ export const PhonesPage: React.FC = () => {
     const params = new URLSearchParams(searchParams);
     if (value === "All") {
       params.delete("perPage");
-      params.delete('page');
+      params.delete("page");
       setSearchParams(params);
       return;
     }
@@ -138,7 +138,7 @@ export const PhonesPage: React.FC = () => {
                 }}
                 onBlur={() => setIsPerPageActive(false)}
               >
-                  {perPage ? perPage : 'All'}
+                {perPage ? perPage : "All"}
                 <span
                   className={`${styles.icon} ${
                     isPerPageActive ? styles.arrowUp : styles.arrowDown
@@ -168,21 +168,14 @@ export const PhonesPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={styles.phonesList}>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            // sortedPhones.map((phone) => (
-            //   <div className={styles.phone} key={phone.id}>
-            //     <ProductCard product={phone} />
-            //   </div>
-            // ))
-            <PaginatedItems
-              itemsPerPage={perPage ? +perPage : phonesAmount}
-              items={sortedPhones}
-            />
-          )}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <PaginatedItems
+            itemsPerPage={perPage ? +perPage : phonesAmount}
+            items={sortedPhones}
+          />
+        )}
       </div>
       <Footer />
     </>

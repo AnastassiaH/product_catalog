@@ -63,9 +63,6 @@
   column-gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
-
-  @include on-tablet {
-  }
 }
 
 .phone {

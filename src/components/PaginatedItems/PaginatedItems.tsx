@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactPaginate from "react-paginate";
 import { Product } from "../../types";
 import { ProductCard } from "../ProductCard";
@@ -16,7 +16,9 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialPage = searchParams.get("page");
-  const itemOffset = initialPage ? (+initialPage * itemsPerPage) % items.length : 0;
+  const itemOffset = initialPage
+    ? (+initialPage * itemsPerPage) % items.length
+    : 0;
 
   const handlePageClick = (value: number) => {
     if (+value > 0) {
@@ -29,8 +31,6 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
       params.delete("page");
       setSearchParams(params);
     }
-    // const newOffset = (value * itemsPerPage) % items.length;
-    // setItemOffset(newOffset);
   };
 
   const endOffset = itemOffset + itemsPerPage;
@@ -40,12 +40,14 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
 
   return (
     <>
-      {currentItems &&
-        currentItems.map((item: Product) => (
-          <div className="itemCard" key={item.id}>
-            <ProductCard product={item} />
-          </div>
-        ))}
+      <div className="productsList">
+        {currentItems &&
+          currentItems.map((item: Product) => (
+            <div className="itemCard" key={item.id}>
+              <ProductCard product={item} />
+            </div>
+          ))}
+      </div>
       <ReactPaginate
         breakLabel="..."
         nextLabel=" "
