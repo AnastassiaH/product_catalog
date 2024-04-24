@@ -56,10 +56,23 @@
   height: 40px;
 }
 
-.phonesList{
-    display: flex;
-    flex-direction: column;
-    row-gap: 40px;
+.phonesList {
+  display: flex;
+  flex-direction: row;
+  row-gap: 40px;
+  column-gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include on-tablet {
+  }
+}
+
+.phone {
+  // max-width: 288px;
+  // width: 229px;
+  // flex-grow: 1;
+  width: 100%;
 }
 
 .dropdown {
@@ -85,11 +98,11 @@
   font-family: Mont-SemiBold;
   background-color: transparent;
   outline: none;
+  cursor: pointer;
 
   @include hover("border-color", $secondary);
 
   @include on-tablet {
-
   }
 }
 
@@ -127,6 +140,7 @@
   display: flex;
   align-items: center;
   color: $secondary;
+  cursor: pointer;
 
   @include hover("color", $primary);
 }
@@ -152,4 +166,3 @@
 .arrowDown {
   background-image: url(../../../public/img/icons/icon-arrow-down.svg);
 }
-
