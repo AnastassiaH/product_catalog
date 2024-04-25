@@ -25,21 +25,25 @@
   @include on-desktop {
     width: 272px !important;
   }
-
-  img {
-    // width: 70%;
-    // margin: 0 auto;
-    // height: 100%;
-    // display: block;
-
-    // @include on-tablet {
-    //   width: 85%;
-    // }
-  }
 }
 
 .slick-slider {
   position: static;
+}
+
+.slick-arrow {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $gray-icons-placeholders;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include on-tablet {
+    top: 20px;
+  }
+
+  @include hover("border-color", $primary);
 }
 
 .slick-prev {
@@ -57,6 +61,13 @@
   }
 }
 
+.slick-prev:hover,
+.slick-prev:focus {
+  background-image: url(../../../public/img/icons/icon-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .slick-next {
   left: unset;
   right: 16px;
@@ -72,29 +83,31 @@
   }
 }
 
-.slick-arrow {
-  display: block;
-  width: 32px;
-  height: 32px;
-  border: 1px solid $gray-icons-placeholders;
+.slick-next:hover,
+.slick-next:focus {
+  background-image: url(../../../public/img/icons/icon-right.svg);
   background-repeat: no-repeat;
   background-position: center;
-
-  @include on-tablet {
-    top: 20px;
-  }
 }
 
 .slick-disabled {
   border-color: $elements;
 }
 
-.slick-disabled.slick-prev {
+.slick-disabled.slick-prev,
+.slick-disabled.slick-prev:hover {
   background-image: url(../../../public/img/icons/icon-left-disabled.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: $gray-icons-placeholders;
 }
 
-.slick-disabled.slick-next {
+.slick-disabled.slick-next,
+.slick-disabled.slick-next:hover {
   background-image: url(../../../public/img/icons/icon-right-disabled.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: $gray-icons-placeholders;
 }
 
 .slick-prev:before,
