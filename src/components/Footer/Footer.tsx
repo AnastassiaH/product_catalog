@@ -6,9 +6,9 @@ export const Footer: React.FC = () => {
   const logoUrl = `${process.env.PUBLIC_URL}/img/logo.svg`;
 
   const handleScrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
-  
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className={styles.footer}>
       <img src={logoUrl} alt="" className={styles.logo} />
@@ -33,7 +33,10 @@ export const Footer: React.FC = () => {
       </nav>
       <div className={styles.backToTopBlock}>
         <p className={styles.backToTop}>Back to top</p>
-        <button className={styles.backToTopButton} onClick={handleScrollToTop}></button>
+        <button
+          className={styles.backToTopButton}
+          onClick={handleScrollToTop}
+        ></button>
       </div>
     </footer>
   );

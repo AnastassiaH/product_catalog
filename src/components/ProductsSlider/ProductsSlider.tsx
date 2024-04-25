@@ -3,11 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./ProductsSlider.scss";
 import { ProductCard } from "../ProductCard";
-import { Product } from "../../types";
+import { Product, ProductDetailed } from "../../types";
 import { Loader } from "../Loader";
 
 type Props = {
-  goods: Product[],
+  goods: Product[] | ProductDetailed[],
   isLoading: boolean
 }
 

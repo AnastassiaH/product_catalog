@@ -29,7 +29,7 @@ export const HomePage: React.FC = () => {
         .finally(() => setIsLoading(false));
     }
   }, []);
-  
+
   const brandNewGoods = useMemo(
     () =>
       goods
@@ -59,7 +59,9 @@ export const HomePage: React.FC = () => {
 
   const accessoriesAmount = useMemo(
     () =>
-      goods ? goods.filter((good) => good.category === "accessories").length : null,
+      goods
+        ? goods.filter((good) => good.category === "accessories").length
+        : null,
     [goods]
   );
 
@@ -71,9 +73,7 @@ export const HomePage: React.FC = () => {
       </div>
       <div className={styles["brand-new-container"]}>
         <h2 className={styles["brand-new-title"]}>Brand new models</h2>
-        <Suspense fallback={<>waiting...</>}>
-          <ProductsSlider goods={brandNewGoods} isLoading={isLoading} />
-        </Suspense>
+        <ProductsSlider goods={brandNewGoods} isLoading={isLoading} />
       </div>
       <div className={styles["categories-container"]}>
         <h2 className={styles["categories-title"]}>Shop by category</h2>
@@ -97,7 +97,9 @@ export const HomePage: React.FC = () => {
                 alt="tablets"
               />
               <p className={styles["category-title"]}>Tablets</p>
-              <p className={styles["category-amount"]}>{tabletsAmount} models</p>
+              <p className={styles["category-amount"]}>
+                {tabletsAmount} models
+              </p>
             </div>
           </NavLink>
           <NavLink className={styles.categoryLink} to="accessories">
@@ -108,7 +110,9 @@ export const HomePage: React.FC = () => {
                 alt="accessories"
               />
               <p className={styles["category-title"]}>Accessories</p>
-              <p className={styles["category-amount"]}>{accessoriesAmount} models</p>
+              <p className={styles["category-amount"]}>
+                {accessoriesAmount} models
+              </p>
             </div>
           </NavLink>
         </div>

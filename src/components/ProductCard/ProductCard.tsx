@@ -1,26 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
-import { Product } from "../../types";
+import { Product, ProductDetailed } from "../../types";
 
 type Props = {
-  product: Product;
+  product: Product | ProductDetailed;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-
+  const image = "image" in product ? product.image : product.images[0];
+  const price = "price" in product ? product.price : product.priceDiscount;
+  const fullPrice =
+    "fullPrice" in product ? product.fullPrice : product.priceRegular;
+  const titleHeight = "image" in product ? "63px" : "42px";
+  const id = "itemId" in product ? product.itemId : product.id;
+  const category = "category" in product ? product.category : null;
   return (
     <div className={styles.container}>
-      <Link to={`/${product.category}/${product.itemId}`} className={styles.productLink}>
-        <div className={styles["image-container"]}>
-          <img src={product.image} alt="" />
-        </div>
-        <p className={styles.title}>{product.name}</p>
-      </Link>
+      {category ? (
+        <Link to={`/${category}/${id}`} className={styles.productLink}>
+          <div className={styles["image-container"]}>
+            <img src={image} alt="" />
+          </div>
+          <p className={styles.title} style={{ height: titleHeight }}>
+            {product.name}
+          </p>
+        </Link>
+      ) : (
+        <Link to={`../${id}`} className={styles.productLink}>
+          <div className={styles["image-container"]}>
+            <img src={image} alt="" />
+          </div>
+          <p className={styles.title} style={{ height: titleHeight }}>
+            {product.name}
+          </p>
+        </Link>
+      )}
+
       <div className={styles.prices}>
-        <p className={styles.price}>${product.price}</p>
+        <p className={styles.price}>${price}</p>
         <p className={styles["full-price"]}>
-          {product.fullPrice === 0 || `$${product.fullPrice}`}
+          {fullPrice === 0 || `$${fullPrice}`}
         </p>
       </div>
       <div className={styles.divider}></div>
