@@ -16,28 +16,32 @@ export const CartPage: React.FC = () => {
   }, [cartItems]);
   return (
     <>
-    <div className={styles.container}>
-      <BackButton />
-      <h1 className={styles.title}>Cart</h1>
-      <div className={styles.cartContent}>
-        <div className={styles.itemsContainer}>
-          {cartItems &&
-            cartItems.map((item) => (
-              <CartItemCard key={item.product?.id} product={item} />
-            ))}
-        </div>
-        <div className={styles.totalContainer}>
-          <div className={styles.top}>
-            <p className={styles.totalSum}>${totalSum}</p>
-            <p className={styles.totalItems}>
-              Total for {cartItems?.length}{" "}
-              {cartItems?.length || 0 > 1 ? "items" : "item"}
-            </p>
+      <div className={styles.container}>
+        <BackButton />
+        <h1 className={styles.title}>Cart</h1>
+        {cartItems ? (
+          <div className={styles.cartContent}>
+            <div className={styles.itemsContainer}>
+              {cartItems &&
+                cartItems.map((item) => (
+                  <CartItemCard key={item.product?.id} product={item} />
+                ))}
+            </div>
+            <div className={styles.totalContainer}>
+              <div className={styles.top}>
+                <p className={styles.totalSum}>${totalSum}</p>
+                <p className={styles.totalItems}>
+                  Total for {cartItems?.length}{" "}
+                  {cartItems?.length || 0 > 1 ? "items" : "item"}
+                </p>
+              </div>
+              <button className={styles.checkoutButton}>Checkout</button>
+            </div>
           </div>
-          <button className={styles.checkoutButton}>Checkout</button>
-        </div>
+        ) : (
+          <p className={styles.emptyMessage}>Your cart is empty</p>
+        )}
       </div>
-    </div>
     </>
   );
 };

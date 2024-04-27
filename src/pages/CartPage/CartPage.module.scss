@@ -92,5 +92,13 @@
   font-family: Mont-Regular;
   height: 48px;
 
-  @include hover('box-shadow', 0 3px 13px 0 rgba(23, 32, 49, 0.4))
+  @include hover("box-shadow", 0 3px 13px 0 rgba(23, 32, 49, 0.4));
+}
+
+.emptyMessage {
+  margin: 0;
+  font-family: Mont-SemiBold;
+  font-size: 20px;
+  line-height: 24px;
+  color: #313237;
 }
