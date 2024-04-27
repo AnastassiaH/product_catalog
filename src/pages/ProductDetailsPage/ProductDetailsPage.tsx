@@ -61,11 +61,11 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      {product ? (
-        <>
-          <div className={styles.container}>
-            <Breadcrumbs details={product?.name} />
-            <BackButton />
+      <div className={styles.container}>
+        <Breadcrumbs details={product?.name} />
+        <BackButton />
+        {product ? (
+          <>
             <h1 className={styles.title}>{product?.name}</h1>
             <div className={styles.main}>
               <div className={styles.images}>
@@ -195,7 +195,15 @@ export const ProductDetailsPage: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </>
+        ) : (
+
+          <p className={styles.notFound}>Product was not found</p>
+
+        )}
+      </div>
+      {product && (
+        <>
           <div className={styles.alsoLike}>
             <h2 className={styles.alsoLikeTitle}>You may also like</h2>
             {categoryGoods && (
@@ -204,8 +212,6 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
           <Footer />
         </>
-      ) : (
-        <>Product was not found</>
       )}
     </>
   );
