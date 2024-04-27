@@ -10,6 +10,7 @@ import styles from "./ProductDetailsPage.module.scss";
 import { ProductsSlider } from "../../components/ProductsSlider";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Footer } from "../../components/Footer";
+import { BackButton } from "../../components/BackButton";
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,148 +61,152 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <Breadcrumbs details={product?.name} />
-        <Link to={`/${category}`} className={styles.backLink}>
-          <span className={styles.arrowBack}></span>Back
-        </Link>
-        <h1 className={styles.title}>{product?.name}</h1>
-        <div className={styles.main}>
-          <div className={styles.images}>
-            <div className={styles.mainImageContainer}>
-              <img src={product?.images[mainImageIndex]} alt="product" />
-            </div>
-            <div className={styles.imagePreview}>
-              {product?.images
-                .filter((_, i) => i !== mainImageIndex)
-                .map((img, i) => (
-                  <div
-                    className={styles.smallImage}
-                    key={img}
-                    onClick={() => setMainImageIndex(i)}
-                  >
-                    <img src={img} alt="product" />
+      {product ? (
+        <>
+          <div className={styles.container}>
+            <Breadcrumbs details={product?.name} />
+            <BackButton />
+            <h1 className={styles.title}>{product?.name}</h1>
+            <div className={styles.main}>
+              <div className={styles.images}>
+                <div className={styles.mainImageContainer}>
+                  <img src={product?.images[mainImageIndex]} alt="product" />
+                </div>
+                <div className={styles.imagePreview}>
+                  {product?.images
+                    .filter((_, i) => i !== mainImageIndex)
+                    .map((img, i) => (
+                      <div
+                        className={styles.smallImage}
+                        key={img}
+                        onClick={() => setMainImageIndex(i)}
+                      >
+                        <img src={img} alt="product" />
+                      </div>
+                    ))}
+                </div>
+              </div>
+              <div className={styles.details}>
+                <div className={styles.colorsBlock}>
+                  <div className={styles.colorsTop}>
+                    <p className={styles.detailsText}>Available colors</p>
+                    <p className={styles.idText}>ID: 802390</p>
                   </div>
+                  <div className={styles.colorOptions}>
+                    <div className={styles.colorCircle}>
+                      <div
+                        className={styles.insideCircle}
+                        style={{ backgroundColor: `${product?.color}` }}
+                      ></div>
+                    </div>
+                    <div className={styles.colorCircle}>
+                      <div className={styles.insideCircle}></div>
+                    </div>
+                    <div className={styles.colorCircle}>
+                      <div className={styles.insideCircle}></div>
+                    </div>
+                    <div className={styles.colorCircle}>
+                      <div className={styles.insideCircle}></div>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.capacityBlock}>
+                  <p className={styles.detailsText}>Select capacity</p>
+                  <div className={styles.capacityOptions}>
+                    {product?.capacityAvailable.map((item) => (
+                      <p
+                        className={
+                          item === product.capacity
+                            ? `${styles.capacityText} ${styles.capacityActive}`
+                            : styles.capacityText
+                        }
+                      >
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.prices}>
+                  <p className={styles.price}>${product?.priceDiscount}</p>
+                  <p className={styles.fullPrice}>${product?.priceRegular}</p>
+                </div>
+                <div className={styles.actions}>
+                  <button className={styles.cart}>Add to cart</button>
+                  <button className={styles.favorite}></button>
+                </div>
+                <div className={styles.description}>
+                  <div>
+                    <p className={styles.detailsText}>Screen</p>
+                    <p className={styles.value}>{product?.screen}</p>
+                  </div>
+                  <div>
+                    <p className={styles.detailsText}>Capacity</p>
+                    <p className={styles.value}>{product?.capacity}</p>
+                  </div>
+                  <div>
+                    <p className={styles.detailsText}>RAM</p>
+                    <p className={styles.value}>{product?.ram}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.info}>
+              <div className={styles.about}>
+                <h3 className={styles.infoTitle}>About</h3>
+                {product?.description.map((item) => (
+                  <p className={styles.aboutDescription}>{item.text[0]}</p>
                 ))}
-            </div>
-          </div>
-          <div className={styles.details}>
-            <div className={styles.colorsBlock}>
-              <div className={styles.colorsTop}>
-                <p className={styles.detailsText}>Available colors</p>
-                <p className={styles.idText}>ID: 802390</p>
               </div>
-              <div className={styles.colorOptions}>
-                <div className={styles.colorCircle}>
-                  <div
-                    className={styles.insideCircle}
-                    style={{ backgroundColor: `${product?.color}` }}
-                  ></div>
+              <div className={styles.techSpecs}>
+                <h3 className={styles.infoTitle}>Tech specs</h3>
+                <div className={styles.techBlocks}>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Screen</p>
+                    <p className={styles.value}>{product?.screen}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Resolution</p>
+                    <p className={styles.value}>{product?.resolution}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Processor</p>
+                    <p className={styles.value}>{product?.processor}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>RAM</p>
+                    <p className={styles.value}>{product?.ram}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Built in memory</p>
+                    <p className={styles.value}>{product?.capacity}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Camera</p>
+                    <p className={styles.value}>{product?.camera}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Zoom</p>
+                    <p className={styles.value}>{product?.zoom}</p>
+                  </div>
+                  <div className={styles.techBlock}>
+                    <p className={styles.detailsText}>Cell</p>
+                    <p className={styles.value}>{product?.cell}</p>
+                  </div>
                 </div>
-                <div className={styles.colorCircle}>
-                  <div className={styles.insideCircle}></div>
-                </div>
-                <div className={styles.colorCircle}>
-                  <div className={styles.insideCircle}></div>
-                </div>
-                <div className={styles.colorCircle}>
-                  <div className={styles.insideCircle}></div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.capacityBlock}>
-              <p className={styles.detailsText}>Select capacity</p>
-              <div className={styles.capacityOptions}>
-                {product?.capacityAvailable.map((item) => (
-                  <p
-                    className={
-                      item === product.capacity
-                        ? `${styles.capacityText} ${styles.capacityActive}`
-                        : styles.capacityText
-                    }
-                  >
-                    {item}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <div className={styles.prices}>
-              <p className={styles.price}>${product?.priceDiscount}</p>
-              <p className={styles.fullPrice}>${product?.priceRegular}</p>
-            </div>
-            <div className={styles.actions}>
-              <button className={styles.cart}>Add to cart</button>
-              <button className={styles.favorite}></button>
-            </div>
-            <div className={styles.description}>
-              <div>
-                <p className={styles.detailsText}>Screen</p>
-                <p className={styles.value}>{product?.screen}</p>
-              </div>
-              <div>
-                <p className={styles.detailsText}>Capacity</p>
-                <p className={styles.value}>{product?.capacity}</p>
-              </div>
-              <div>
-                <p className={styles.detailsText}>RAM</p>
-                <p className={styles.value}>{product?.ram}</p>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.info}>
-          <div className={styles.about}>
-            <h3 className={styles.infoTitle}>About</h3>
-            {product?.description.map((item) => (
-              <p className={styles.aboutDescription}>{item.text[0]}</p>
-            ))}
+          <div className={styles.alsoLike}>
+            <h2 className={styles.alsoLikeTitle}>You may also like</h2>
+            {categoryGoods && (
+              <ProductsSlider goods={categoryGoods} isLoading={isLoading} />
+            )}
           </div>
-          <div className={styles.techSpecs}>
-            <h3 className={styles.infoTitle}>Tech specs</h3>
-            <div className={styles.techBlocks}>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Screen</p>
-                <p className={styles.value}>{product?.screen}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Resolution</p>
-                <p className={styles.value}>{product?.resolution}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Processor</p>
-                <p className={styles.value}>{product?.processor}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>RAM</p>
-                <p className={styles.value}>{product?.ram}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Built in memory</p>
-                <p className={styles.value}>{product?.capacity}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Camera</p>
-                <p className={styles.value}>{product?.camera}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Zoom</p>
-                <p className={styles.value}>{product?.zoom}</p>
-              </div>
-              <div className={styles.techBlock}>
-                <p className={styles.detailsText}>Cell</p>
-                <p className={styles.value}>{product?.cell}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.alsoLike}>
-        <h2 className={styles.alsoLikeTitle}>You may also like</h2>
-        {categoryGoods && (
-          <ProductsSlider goods={categoryGoods} isLoading={isLoading} />
-        )}
-      </div>
-      <Footer />
+          <Footer />
+        </>
+      ) : (
+        <>Product was not found</>
+      )}
     </>
   );
 };
