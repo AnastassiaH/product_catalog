@@ -9,12 +9,18 @@
   padding-inline: $content-padding-mobile;
   border: 1px solid $elements;
   row-gap: 32px;
+  margin-top: 56px;
 
   @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-inline: $content-padding-tablet;
+    margin-top: 64px;
+  }
+
+  @include on-desktop{
+    margin-top: 80px;
   }
 
   .logo {

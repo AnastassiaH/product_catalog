@@ -36,7 +36,10 @@ export const TabletsPage: React.FC = () => {
     }
   }, [goods]);
 
-  const tabletsAmount = useMemo(() => (tablets ? tablets.length : 0), [tablets]);
+  const tabletsAmount = useMemo(
+    () => (tablets ? tablets.length : 0),
+    [tablets]
+  );
   const sortByOptions = useMemo(
     () => [
       { name: "Newest", value: "age" },
@@ -81,101 +84,98 @@ export const TabletsPage: React.FC = () => {
   }, [sortBy, tablets]);
 
   return (
-    <>
-      <div className={styles.container}>
-        <Breadcrumbs />
-        <h1 className={styles.pageHeading}>Tablets</h1>
-        <p className={styles.amount}>{tabletsAmount} models</p>
-        <div className={styles.dropdowns}>
-          <div className={styles.sortByContainer}>
-            <div className={styles.dropdown}>
-              <button
-                className={styles.dropdownTrigger}
-                onClick={() => {
-                  setIsSortActive(!isSortActive);
-                }}
-                onBlur={() => setIsSortActive(false)}
-              >
-                {
-                  sortByOptions.filter((option) => option.value === sortBy)[0]
-                    .name
-                }
-                <span
-                  className={`${styles.icon} ${
-                    isSortActive ? styles.arrowUp : styles.arrowDown
-                  }`}
-                ></span>
-              </button>
-              <div
-                className={`${styles.dropdownContent} ${
-                  isSortActive ? styles.active : ""
+    <div className={styles.container}>
+      <Breadcrumbs />
+      <h1 className={styles.pageHeading}>Tablets</h1>
+      <p className={styles.amount}>{tabletsAmount} models</p>
+      <div className={styles.dropdowns}>
+        <div className={styles.sortByContainer}>
+          <div className={styles.dropdown}>
+            <button
+              className={styles.dropdownTrigger}
+              onClick={() => {
+                setIsSortActive(!isSortActive);
+              }}
+              onBlur={() => setIsSortActive(false)}
+            >
+              {
+                sortByOptions.filter((option) => option.value === sortBy)[0]
+                  .name
+              }
+              <span
+                className={`${styles.icon} ${
+                  isSortActive ? styles.arrowUp : styles.arrowDown
                 }`}
-              >
-                <ul className={styles.content}>
-                  {sortByOptions.map((option) => (
-                    <li
-                      className={styles.option}
-                      key={option.name}
-                      onClick={() => {
-                        onSortBySelected(option.value);
-                      }}
-                    >
-                      {option.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className={styles.itemsOnPageContainer}>
-            <div className={styles.dropdown}>
-              <button
-                className={styles.dropdownTrigger}
-                onClick={() => {
-                  setIsPerPageActive(!isPerPageActive);
-                }}
-                onBlur={() => setIsPerPageActive(false)}
-              >
-                {perPage ? perPage : "All"}
-                <span
-                  className={`${styles.icon} ${
-                    isPerPageActive ? styles.arrowUp : styles.arrowDown
-                  }`}
-                ></span>
-              </button>
-
-              <div
-                className={`${styles.dropdownContent} ${
-                  isPerPageActive ? styles.active : ""
-                }`}
-              >
-                <ul className={styles.content}>
-                  {itemsPerPageOptions.map((option) => (
-                    <li
-                      className={styles.option}
-                      key={option}
-                      onClick={() => {
-                        onPerPageSelected(option);
-                      }}
-                    >
-                      {option}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              ></span>
+            </button>
+            <div
+              className={`${styles.dropdownContent} ${
+                isSortActive ? styles.active : ""
+              }`}
+            >
+              <ul className={styles.content}>
+                {sortByOptions.map((option) => (
+                  <li
+                    className={styles.option}
+                    key={option.name}
+                    onClick={() => {
+                      onSortBySelected(option.value);
+                    }}
+                  >
+                    {option.name}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <PaginatedItems
-            itemsPerPage={perPage ? +perPage : tabletsAmount}
-            items={sortedTablets}
-          />
-        )}
+        <div className={styles.itemsOnPageContainer}>
+          <div className={styles.dropdown}>
+            <button
+              className={styles.dropdownTrigger}
+              onClick={() => {
+                setIsPerPageActive(!isPerPageActive);
+              }}
+              onBlur={() => setIsPerPageActive(false)}
+            >
+              {perPage ? perPage : "All"}
+              <span
+                className={`${styles.icon} ${
+                  isPerPageActive ? styles.arrowUp : styles.arrowDown
+                }`}
+              ></span>
+            </button>
+
+            <div
+              className={`${styles.dropdownContent} ${
+                isPerPageActive ? styles.active : ""
+              }`}
+            >
+              <ul className={styles.content}>
+                {itemsPerPageOptions.map((option) => (
+                  <li
+                    className={styles.option}
+                    key={option}
+                    onClick={() => {
+                      onPerPageSelected(option);
+                    }}
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer />
-    </>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <PaginatedItems
+          itemsPerPage={perPage ? +perPage : tabletsAmount}
+          items={sortedTablets}
+        />
+      )}
+    </div>
   );
 };

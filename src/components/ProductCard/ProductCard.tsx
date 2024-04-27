@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { Product, ProductDetailed } from "../../types";
+import { AddToCartButton } from "../AddToCartButton";
 
 type Props = {
   product: Product | ProductDetailed;
@@ -59,7 +60,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className={styles.actions}>
-        <button className={styles.cart}>Add to cart</button>
+        <div className={styles.cartButtonContainer}>
+          <AddToCartButton product={product} />
+        </div>
         <button className={styles.favorite}></button>
       </div>
     </div>

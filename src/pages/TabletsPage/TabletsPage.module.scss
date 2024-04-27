@@ -6,7 +6,6 @@
   box-sizing: border-box;
   padding-inline: $content-padding-mobile;
   padding-top: 24px;
-  padding-bottom: 64px;
 
   @include on-tablet {
     padding-inline: $content-padding-tablet;

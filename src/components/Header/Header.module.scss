@@ -76,7 +76,29 @@
 
   &--cart {
     background-image: url(../../../public/img/icons/icon-cart.svg);
+    position: relative;
   }
+}
+
+.cartItemsAmount {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: $red;
+  border-radius: 50%;
+  font-family: Mont-Regular;
+  font-size: 9px;
+  line-height: 11px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  transform: translate(50%, -50%);
+  box-sizing: border-box;
+  padding-left: 1px;
 }
 
 .menu {

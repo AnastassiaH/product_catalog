@@ -94,15 +94,9 @@
     display: flex;
   }
 
-  .cart {
+  .cartButtonContainer {
     flex-grow: 1;
     margin-right: 8px;
-    border: none;
-    color: white;
-    font-size: 14px;
-    line-height: 21px;
-    font-family: Mont-Semibold;
-    background-color: $primary;
   }
 
   .favorite {

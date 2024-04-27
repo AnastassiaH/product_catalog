@@ -38,7 +38,9 @@
   line-height: 16px;
   font-family: Mont-Regular;
   margin-right: 8px;
-  color: $primary;
+  color: $secondary;
+
+  @include hover("color", $primary);
 }
 
 .breadcrumb {

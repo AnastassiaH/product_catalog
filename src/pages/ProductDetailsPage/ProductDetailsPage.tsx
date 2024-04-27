@@ -11,6 +11,7 @@ import { ProductsSlider } from "../../components/ProductsSlider";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Footer } from "../../components/Footer";
 import { BackButton } from "../../components/BackButton";
+import { AddToCartButton } from "../../components/AddToCartButton";
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -115,6 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className={styles.capacityOptions}>
                     {product?.capacityAvailable.map((item) => (
                       <p
+                        key={item}
                         className={
                           item === product.capacity
                             ? `${styles.capacityText} ${styles.capacityActive}`
@@ -131,7 +133,9 @@ export const ProductDetailsPage: React.FC = () => {
                   <p className={styles.fullPrice}>${product?.priceRegular}</p>
                 </div>
                 <div className={styles.actions}>
-                  <button className={styles.cart}>Add to cart</button>
+                  <div className={styles.cartButtonContainer}>
+                    <AddToCartButton product={product} />
+                  </div>
                   <button className={styles.favorite}></button>
                 </div>
                 <div className={styles.description}>
@@ -154,7 +158,7 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.about}>
                 <h3 className={styles.infoTitle}>About</h3>
                 {product?.description.map((item) => (
-                  <p className={styles.aboutDescription}>{item.text[0]}</p>
+                  <p key={item.title} className={styles.aboutDescription}>{item.text[0]}</p>
                 ))}
               </div>
               <div className={styles.techSpecs}>
@@ -197,9 +201,7 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </>
         ) : (
-
           <p className={styles.notFound}>Product was not found</p>
-
         )}
       </div>
       {product && (

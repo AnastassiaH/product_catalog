@@ -10,8 +10,8 @@ export type ProductDetailed = {
   color: string;
   images: string[];
   description: {
-    title: string,
-    text: string[],
+    title: string;
+    text: string[];
   }[];
   screen: string;
   resolution: string;
@@ -35,4 +35,9 @@ export type Product = {
   screen: string;
   ram: string;
   year: number;
+};
+
+export type CartItem = {
+  product: Product | undefined;
+  amount: number;
 };

@@ -121,7 +121,6 @@ export const HomePage: React.FC = () => {
         <h2 className={styles.hotPricesTitle}>Hot prices</h2>
         <ProductsSlider goods={hotPricesGoods} isLoading={isLoading} />
       </div>
-      <Footer />
     </>
   );
 };
