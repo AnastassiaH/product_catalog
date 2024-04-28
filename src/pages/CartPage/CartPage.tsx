@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import styles from "./CartPage.module.scss";
 import { BackButton } from "../../components/BackButton";
 import { CartContext } from "../../context/CartContext";
@@ -14,12 +14,19 @@ export const CartPage: React.FC = () => {
       0
     );
   }, [cartItems]);
+
+  let cartItemsAmount = useMemo(
+    () =>
+      cartItems ? cartItems.reduce((acc, item) => acc + item.amount, 0) : 0,
+    [cartItems]
+  );
+
   return (
     <>
       <div className={styles.container}>
         <BackButton />
         <h1 className={styles.title}>Cart</h1>
-        {cartItems ? (
+        {cartItems?.length ? (
           <div className={styles.cartContent}>
             <div className={styles.itemsContainer}>
               {cartItems &&
@@ -31,8 +38,8 @@ export const CartPage: React.FC = () => {
               <div className={styles.top}>
                 <p className={styles.totalSum}>${totalSum}</p>
                 <p className={styles.totalItems}>
-                  Total for {cartItems?.length}{" "}
-                  {cartItems?.length || 0 > 1 ? "items" : "item"}
+                  Total for {cartItemsAmount}{" "}
+                  {cartItemsAmount === 1 ? "item" : "items"}
                 </p>
               </div>
               <button className={styles.checkoutButton}>Checkout</button>
