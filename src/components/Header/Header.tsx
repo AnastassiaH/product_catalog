@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { CartContext } from "../../context/CartContext";
+import { FavoritesContext } from "../../context/FavoritesContext";
 
 export const Header: React.FC = () => {
   const logoUrl = `${process.env.PUBLIC_URL}/img/logo.svg`;
   const [isActive, setIsActive] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const { favoriteItems } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (isActive) {
@@ -44,7 +46,11 @@ export const Header: React.FC = () => {
       </div>
       <aside className={`${styles.menu} ${isActive ? styles.active : ""}`}>
         <div className={styles.top}>
-          <Link className={styles.logoLink} to="/" onClick={() => setIsActive(false)}>
+          <Link
+            className={styles.logoLink}
+            to="/"
+            onClick={() => setIsActive(false)}
+          >
             <img src={logoUrl} alt="" />
           </Link>
           <button onClick={toggleMenu} className={styles.button}>
@@ -53,7 +59,10 @@ export const Header: React.FC = () => {
         </div>
         <nav className={styles.nav}>
           <ul className={styles["nav__list"]}>
-            <li className={styles["nav__item"]} onClick={() => setIsActive(false)}>
+            <li
+              className={styles["nav__item"]}
+              onClick={() => setIsActive(false)}
+            >
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -65,7 +74,10 @@ export const Header: React.FC = () => {
                 Home
               </NavLink>
             </li>
-            <li className={styles["nav__item"]} onClick={() => setIsActive(false)}>
+            <li
+              className={styles["nav__item"]}
+              onClick={() => setIsActive(false)}
+            >
               <NavLink
                 to="/phones"
                 className={({ isActive }) =>
@@ -77,7 +89,10 @@ export const Header: React.FC = () => {
                 Phones
               </NavLink>
             </li>
-            <li className={styles["nav__item"]} onClick={() => setIsActive(false)}>
+            <li
+              className={styles["nav__item"]}
+              onClick={() => setIsActive(false)}
+            >
               <NavLink
                 to="/tablets"
                 className={({ isActive }) =>
@@ -89,7 +104,10 @@ export const Header: React.FC = () => {
                 Tablets
               </NavLink>
             </li>
-            <li className={styles["nav__item"]} onClick={() => setIsActive(false)}>
+            <li
+              className={styles["nav__item"]}
+              onClick={() => setIsActive(false)}
+            >
               <NavLink
                 to="/accessories"
                 className={({ isActive }) =>
@@ -113,7 +131,13 @@ export const Header: React.FC = () => {
               }`
             }
           >
-            <span className={`${styles.icon} ${styles["icon--heart"]}`}></span>
+            <span className={`${styles.icon} ${styles["icon--heart"]}`}>
+              {favoriteItems?.length && (
+                <span className={styles.cartItemsAmount}>
+                  {favoriteItems?.length}
+                </span>
+              )}
+            </span>
           </NavLink>
           <NavLink
             to="/cart"

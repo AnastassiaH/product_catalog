@@ -11,33 +11,36 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProductsProvider } from "./context/ProductsContext";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage/ProductDetailsPage";
 import { CartProvider } from "./context/CartContext";
+import { FavoritesProvider } from "./context/FavoritesContext";
 
 export const Root = () => (
   <React.StrictMode>
     <ProductsProvider>
       <CartProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="accessories">
-                <Route index element={<AccessoriesPage />} />
-                <Route path=":productId?" element={<ProductDetailsPage />} />
+        <FavoritesProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<HomePage />} />
+                <Route path="accessories">
+                  <Route index element={<AccessoriesPage />} />
+                  <Route path=":productId?" element={<ProductDetailsPage />} />
+                </Route>
+                <Route path="tablets">
+                  <Route index element={<TabletsPage />} />
+                  <Route path=":productId" element={<ProductDetailsPage />} />
+                </Route>
+                <Route path="phones">
+                  <Route index element={<PhonesPage />} />
+                  <Route path=":productId" element={<ProductDetailsPage />} />
+                </Route>
+                <Route path="cart" element={<CartPage />} />
+                <Route path="favorites" element={<FavoritesPage />} />
               </Route>
-              <Route path="tablets">
-                <Route index element={<TabletsPage />} />
-                <Route path=":productId" element={<ProductDetailsPage />} />
-              </Route>
-              <Route path="phones">
-                <Route index element={<PhonesPage />} />
-                <Route path=":productId" element={<ProductDetailsPage />} />
-              </Route>
-              <Route path="cart" element={<CartPage />} />
-              <Route path="favorites" element={<FavoritesPage />} />
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Router>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Router>
+        </FavoritesProvider>
       </CartProvider>
     </ProductsProvider>
   </React.StrictMode>

@@ -12,6 +12,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { Footer } from "../../components/Footer";
 import { BackButton } from "../../components/BackButton";
 import { AddToCartButton } from "../../components/AddToCartButton";
+import { FavoriteButton } from "../../components/FavoriteButton";
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -136,7 +137,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className={styles.cartButtonContainer}>
                     <AddToCartButton product={product} />
                   </div>
-                  <button className={styles.favorite}></button>
+                  <FavoriteButton product={product} />
                 </div>
                 <div className={styles.description}>
                   <div>
