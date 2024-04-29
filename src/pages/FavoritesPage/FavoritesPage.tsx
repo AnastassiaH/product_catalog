@@ -1,8 +1,25 @@
-import React from 'react'
-import styles from './FavoritesPage.module.scss'
+import React, { useContext } from "react";
+import styles from "./FavoritesPage.module.scss";
+import { Breadcrumbs } from "../../components/BreadCrumbs";
+import { FavoritesContext } from "../../context/FavoritesContext";
+import { Product } from "../../types";
+import { ProductCard } from "../../components/ProductCard";
 
-export const FavoritesPage = () => {
+export const FavoritesPage: React.FC = () => {
+  const { favoriteItems } = useContext(FavoritesContext);
   return (
-    <div style={{marginTop: '50px'}}>FavoritesPage</div>
-  )
-}
+    <div className={styles.container}>
+      <Breadcrumbs />
+      <h1 className={styles.title}>Favorites</h1>
+      <p className={styles.amount}>{favoriteItems?.length} models</p>
+      <div className={styles.productsList}>
+        {favoriteItems &&
+          favoriteItems.map((item: Product) => (
+            <div className={styles.itemCard} key={item.id}>
+              <ProductCard product={item} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+};
