@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import styles from "./CartPage.module.scss";
 import { BackButton } from "../../components/BackButton";
 import { CartContext } from "../../context/CartContext";
 import { CartItemCard } from "../../components/CartItemCard";
-import { Footer } from "../../components/Footer";
+import { CheckoutModal } from "../../components/CheckoutModal/CheckoutModal";
 
 export const CartPage: React.FC = () => {
   const { cartItems } = useContext(CartContext);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const totalSum = useMemo(() => {
     return cartItems?.reduce(
@@ -42,7 +43,13 @@ export const CartPage: React.FC = () => {
                   {cartItemsAmount === 1 ? "item" : "items"}
                 </p>
               </div>
-              <button className={styles.checkoutButton}>Checkout</button>
+              <button
+                className={styles.checkoutButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                Checkout
+              </button>
+              <CheckoutModal open={isModalOpen} setIsModalOpen={setIsModalOpen} />
             </div>
           </div>
         ) : (
