@@ -1,8 +1,12 @@
-import React from 'react'
-import styles from './NotFoundPage.module.scss'
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./NotFoundPage.module.scss";
 
 export const NotFoundPage = () => {
   return (
-    <div style={{marginTop: '50px'}}>NotFoundPage</div>
-  )
-}
+    <div className={styles.container}>
+      <p className={styles.title}>Page not found</p>
+      <Link to="/" className={styles.homeLink}>Home Page</Link>
+    </div>
+  );
+};
