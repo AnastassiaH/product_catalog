@@ -48,7 +48,7 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
             </div>
           ))}
       </div>
-      <ReactPaginate
+      {items.length > 0 && <ReactPaginate
         breakLabel="..."
         nextLabel=" "
         onPageChange={(event) => {
@@ -64,7 +64,7 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
         pageLinkClassName="pageLink"
         activeClassName="activePage"
         forcePage={initialPage ? +initialPage - 1 : 0}
-      />
+      />}
     </>
   );
 };
