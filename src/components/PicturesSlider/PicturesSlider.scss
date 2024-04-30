@@ -14,10 +14,6 @@
     box-sizing: border-box;
     margin-bottom: 64px;
   }
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
 }
 
 .banner-container img {
