@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BackButton.module.scss";
 
-export const BackButton = () => {
+export const BackButton: React.FC = () => {
   const navigate = useNavigate();
 
   function goBack() {

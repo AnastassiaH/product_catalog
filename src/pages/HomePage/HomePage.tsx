@@ -3,7 +3,6 @@ import React, {
   useContext,
   useMemo,
   useState,
-  Suspense,
 } from "react";
 import { NavLink } from "react-router-dom";
 import { PicturesSlider } from "../../components/PicturesSlider";
@@ -11,7 +10,6 @@ import styles from "./HomePage.module.scss";
 import { ProductsContext } from "../../context/ProductsContext";
 import { getProducts } from "../../services/products";
 import { ProductsSlider } from "../../components/ProductsSlider";
-import { Footer } from "../../components/Footer";
 
 export const HomePage: React.FC = () => {
   const { goods, setGoods } = useContext(ProductsContext);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useContext } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Product } from "../../types";
 import { Breadcrumbs } from "../../components/BreadCrumbs";
 import { ProductsContext } from "../../context/ProductsContext";
@@ -7,7 +7,6 @@ import { getProducts } from "../../services/products";
 import { Loader } from "../../components/Loader";
 import styles from "./PhonesPage.module.scss";
 import { PaginatedItems } from "../../components/PaginatedItems/PaginatedItems";
-import { Footer } from "../../components/Footer";
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);

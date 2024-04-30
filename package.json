@@ -1,6 +1,7 @@
 {
   "name": "phone_catalog",
   "version": "0.1.0",
+  "homepage": "https://AnastassiaH.github.io/product_catalog",
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.1",
@@ -26,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-slick": "^0.23.13"
+    "@types/react-slick": "^0.23.13",
+    "gh-pages": "^6.1.1"
   }
 }

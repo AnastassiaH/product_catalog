@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { getPhones } from "../../services/phones";
 import { getTablets } from "../../services/tablets";
 import { getAccessories } from "../../services/accessories";
@@ -8,7 +8,6 @@ import { Loader } from "../../components/Loader";
 import { Breadcrumbs } from "../../components/BreadCrumbs";
 import styles from "./ProductDetailsPage.module.scss";
 import { ProductsSlider } from "../../components/ProductsSlider";
-import { ProductsContext } from "../../context/ProductsContext";
 import { Footer } from "../../components/Footer";
 import { BackButton } from "../../components/BackButton";
 import { AddToCartButton } from "../../components/AddToCartButton";

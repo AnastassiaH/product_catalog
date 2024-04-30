@@ -7,7 +7,6 @@ import { getProducts } from "../../services/products";
 import { Loader } from "../../components/Loader";
 import styles from "./AccessoriesPage.module.scss";
 import { PaginatedItems } from "../../components/PaginatedItems/PaginatedItems";
-import { Footer } from "../../components/Footer";
 
 export const AccessoriesPage: React.FC = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
