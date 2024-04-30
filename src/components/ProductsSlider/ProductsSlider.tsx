@@ -27,7 +27,7 @@ export const ProductsSlider: React.FC<Props> = ({ goods, isLoading }) => {
 
   return (
     <>
-      {goods.length && (
+      {goods.length > 0 && (
         <div className="slider-container">
           <Slider {...settings}>
             {goods.map((good) => (
