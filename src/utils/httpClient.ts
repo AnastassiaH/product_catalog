@@ -1,4 +1,4 @@
-const BASE_URL = "https://github.com/AnastassiaH/product_catalog";
+const BASE_URL = "https://github.com/AnastassiaH/product_catalog/public/api";
 
 export function getData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then((response) => {
