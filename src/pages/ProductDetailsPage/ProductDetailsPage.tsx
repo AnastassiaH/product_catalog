@@ -45,6 +45,8 @@ export const ProductDetailsPage: React.FC = () => {
           setCategoryGoods(goods);
           const product = goods.filter((good) => good.id === itemId)[0];
           setProduct(product);
+        }).catch((e) => {
+          throw new Error;
         })
         .finally(() => setIsLoading(false));
     }

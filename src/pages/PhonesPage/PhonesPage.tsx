@@ -24,7 +24,9 @@ export const PhonesPage: React.FC = () => {
       setIsLoading(true);
       getProducts()
         .then(setGoods)
-        .catch()
+        .catch((e) => {
+          throw new Error;
+        })
         .finally(() => setIsLoading(false));
     }
   }, []);
