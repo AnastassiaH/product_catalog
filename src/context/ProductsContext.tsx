@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { Product } from "../types";
+import React, { useState, useCallback } from 'react';
+import { Product } from '../types';
 
 type Props = {
   children: React.ReactNode;
@@ -7,26 +7,25 @@ type Props = {
 
 type ContextType = {
   goods: Product[] | null;
-  setGoods: React.Dispatch<React.SetStateAction<Product[] | null>>;
+  updateGoods: (values: Product[]) => void;
 };
 
 export const ProductsContext = React.createContext<ContextType>({
-    goods: null,
-    setGoods: () => {}
+  goods: null,
+  updateGoods: ([]) => {},
 });
 
-export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [goods, setGoods] = useState<Product[] | null>(null);
+export const ProductsProvider: React.FC<Props> = ({children}) => {
+  const [goods, setGoods] = useState<Product[]>([]);
 
-  const value = useMemo(
-    () => ({
-      goods,
-      setGoods,
-    }),
-    [goods]
-  );
+  const updateGoods = useCallback((data: Product[]) => {
+    if (data && data?.length) {
+      setGoods(data);
+    }
+  }, []);
+
   return (
-    <ProductsContext.Provider value={value}>
+    <ProductsContext.Provider value={{goods, updateGoods}}>
       {children}
     </ProductsContext.Provider>
   );

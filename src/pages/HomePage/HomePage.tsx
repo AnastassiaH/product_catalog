@@ -3,32 +3,42 @@ import React, {
   useContext,
   useMemo,
   useState,
+  useCallback,
 } from "react";
 import { NavLink } from "react-router-dom";
 import { PicturesSlider } from "../../components/PicturesSlider";
-import styles from "./HomePage.module.scss";
 import { ProductsContext } from "../../context/ProductsContext";
 import { getProducts } from "../../services/products";
 import { ProductsSlider } from "../../components/ProductsSlider";
+import { Product } from "../../types";
+import styles from "./HomePage.module.scss";
 
 export const HomePage: React.FC = () => {
-  const { goods, setGoods } = useContext(ProductsContext);
+  const { goods, updateGoods } = useContext(ProductsContext);
   const [isLoading, setIsLoading] = useState(false);
   const categoryPhones = `${process.env.PUBLIC_URL}/img/category-phones.png`;
   const categoryTablets = `${process.env.PUBLIC_URL}/img/category-tablets.png`;
   const categoryAccessories = `${process.env.PUBLIC_URL}/img/category-accessories.png`;
 
+  const fetchData = useCallback(async () => {
+    const data = await getProducts();
+    if (data && data?.length) {
+      return data;
+    }
+  }, []);
+
   useEffect(() => {
-    if (!goods) {
+    if (!goods || !goods?.length) {
       setIsLoading(true);
-      getProducts()
-        .then(setGoods)
+
+      fetchData()
+        .then((data) => updateGoods(data as Product[]))
         .catch((e) => {
-          throw new Error;
+          throw new Error();
         })
         .finally(() => setIsLoading(false));
     }
-  }, []);
+  }, [fetchData, goods, updateGoods]);
 
   const brandNewGoods = useMemo(
     () =>

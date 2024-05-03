@@ -13,7 +13,7 @@ export const AccessoriesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSortActive, setIsSortActive] = useState(false);
   const [isPerPageActive, setIsPerPageActive] = useState(false);
-  const { goods, setGoods } = useContext(ProductsContext);
+  const { goods, updateGoods } = useContext(ProductsContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get("sort") || "age";
@@ -23,7 +23,7 @@ export const AccessoriesPage: React.FC = () => {
     if (!goods) {
       setIsLoading(true);
       getProducts()
-        .then(setGoods)
+        .then(updateGoods)
         .catch()
         .finally(() => setIsLoading(false));
     }
