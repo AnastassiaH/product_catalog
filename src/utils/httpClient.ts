@@ -1,5 +1,3 @@
- const BASE_URL = "https://github.com/AnastassiaH/product_catalog";
-
 const API_ENDPOINT = `api`;
 
 export function getData<T>(url: string): Promise<T> {
