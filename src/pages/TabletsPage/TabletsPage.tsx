@@ -6,7 +6,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { fetchProducts } from "../../services/products";
 import { Loader } from "../../components/Loader";
 import styles from "./TabletsPage.module.scss";
-import { PaginatedItems } from "../../components/PaginatedItems/PaginatedItems";
+import { ProductList } from "../../components/ProductList/ProductList";
 
 export const TabletsPage: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -172,7 +172,7 @@ export const TabletsPage: React.FC = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <PaginatedItems
+        <ProductList
           itemsPerPage={perPage ? +perPage : tabletsAmount}
           items={sortedTablets}
         />

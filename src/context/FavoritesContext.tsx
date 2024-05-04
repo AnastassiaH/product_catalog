@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import { Product } from "../types";
 
 type Props = {
@@ -7,23 +7,26 @@ type Props = {
 
 type ContextType = {
   favoriteItems: Product[] | null;
-  setFavoriteItems: React.Dispatch<React.SetStateAction<Product[] | null>>;
+  updateFavoriteItems: (values: Product[]) => void;
 };
 
 export const FavoritesContext = React.createContext<ContextType>({
   favoriteItems: null,
-  setFavoriteItems: () => {},
+  updateFavoriteItems: () => {},
 });
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
   const [favoriteItems, setFavoriteItems] = useState<Product[] | null>(null);
 
-  const value = useMemo(
-    () => ({
-      favoriteItems,
-      setFavoriteItems,
-    }),
-    [favoriteItems]
+  const updateFavoriteItems = useCallback((data: Product[]) => {
+    if (data) {
+      setFavoriteItems(data);
+    }
+  }, []);
+
+  return (
+    <FavoritesContext.Provider value={{ favoriteItems, updateFavoriteItems }}>
+      {children}
+    </FavoritesContext.Provider>
   );
-  return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;
 };

@@ -10,7 +10,7 @@ type Props = {
 
 export const AddToCartButton: React.FC<Props> = ({ product }) => {
   const { goods } = useContext(ProductsContext);
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, updateCartItems } = useContext(CartContext);
 
   const newItem =
     "itemId" in product
@@ -18,7 +18,7 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
       : goods?.filter((good) => good.itemId === product.id)[0];
 
   const addToCart = () => {
-    setCartItems(
+    updateCartItems(
       cartItems
         ? [...cartItems, { product: newItem, amount: 1 }]
         : [{ product: newItem, amount: 1 }]

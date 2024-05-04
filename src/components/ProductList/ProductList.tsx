@@ -1,16 +1,16 @@
 import React from "react";
-import ReactPaginate from "react-paginate";
 import { Product } from "../../types";
 import { ProductCard } from "../ProductCard";
 import { useSearchParams } from "react-router-dom";
-import "./PaginatedItems.scss";
+import { Pagination } from "../Pagination";
+import styles from "./ProductList.module.scss";
 
-type PaginatedItemsProps = {
+type ProductListProps = {
   itemsPerPage: number;
   items: Product[];
 };
 
-export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
+export const ProductList: React.FC<ProductListProps> = ({
   itemsPerPage,
   items,
 }) => {
@@ -19,6 +19,10 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
   const itemOffset = initialPage
     ? (+initialPage * itemsPerPage) % items.length
     : 0;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = items.slice(itemOffset, endOffset);
+  const pageCount =
+    itemsPerPage > 16 ? 0 : Math.ceil(items.length / itemsPerPage);
 
   const handlePageClick = (value: number) => {
     if (+value > 0) {
@@ -33,38 +37,23 @@ export const PaginatedItems: React.FC<PaginatedItemsProps> = ({
     }
   };
 
-  const endOffset = itemOffset + itemsPerPage;
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount =
-    itemsPerPage > 16 ? 0 : Math.ceil(items.length / itemsPerPage);
-
   return (
     <>
-      <div className="productsList">
+      <div className={styles.productsList}>
         {currentItems &&
           currentItems.map((item: Product) => (
-            <div className="itemCard" key={item.id}>
+            <div className={styles.itemCard} key={item.id}>
               <ProductCard product={item} />
             </div>
           ))}
       </div>
-      {items.length > 0 && <ReactPaginate
-        breakLabel="..."
-        nextLabel=" "
-        onPageChange={(event) => {
-          handlePageClick(event.selected);
-        }}
-        pageCount={pageCount}
-        previousLabel=" "
-        renderOnZeroPageCount={null}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={2}
-        containerClassName="pagination"
-        pageClassName="pageNumber"
-        pageLinkClassName="pageLink"
-        activeClassName="activePage"
-        forcePage={initialPage ? +initialPage - 1 : 0}
-      />}
+      {items.length > 0 && (
+        <Pagination
+          pageCount={pageCount}
+          initialPage={initialPage}
+          handlePageClick={handlePageClick}
+        />
+      )}
     </>
   );
 };

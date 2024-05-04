@@ -8,11 +8,11 @@ type Props = {
 };
 
 export const CheckoutModal: React.FC<Props> = ({ open, setIsModalOpen }) => {
-  const { setCartItems } = useContext(CartContext);
+  const { updateCartItems } = useContext(CartContext);
 
   const confirm = () => {
     localStorage.removeItem("cartItem");
-    setCartItems(null);
+    updateCartItems([]);
   };
 
   if (!open) {

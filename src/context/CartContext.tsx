@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import { CartItem } from "../types";
 
 type Props = {
@@ -7,23 +7,26 @@ type Props = {
 
 type ContextType = {
   cartItems: CartItem[] | null;
-  setCartItems: React.Dispatch<React.SetStateAction<CartItem[] | null>>;
+  updateCartItems: (values: CartItem[]) => void;
 };
 
 export const CartContext = React.createContext<ContextType>({
   cartItems: null,
-  setCartItems: () => {},
+  updateCartItems: () => {},
 });
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[] | null>(null);
 
-  const value = useMemo(
-    () => ({
-      cartItems,
-      setCartItems,
-    }),
-    [cartItems]
+  const updateCartItems = useCallback((data: CartItem[]) => {
+    if (data) {
+      setCartItems(data);
+    }
+  }, []);
+
+  return (
+    <CartContext.Provider value={{ cartItems, updateCartItems }}>
+      {children}
+    </CartContext.Provider>
   );
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

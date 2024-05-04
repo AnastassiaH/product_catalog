@@ -8,11 +8,11 @@ type Props = {
 };
 
 export const CartItemCard: React.FC<Props> = ({ product }) => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, updateCartItems } = useContext(CartContext);
 
   const deleteItem = useCallback((id: string | undefined) => {
     if (cartItems) {
-      setCartItems(cartItems.filter((item) => item.product?.itemId !== id));
+      updateCartItems(cartItems.filter((item) => item.product?.itemId !== id));
     }
   }, []);
 
@@ -28,7 +28,7 @@ export const CartItemCard: React.FC<Props> = ({ product }) => {
 
       if (currentItem) {
         cartItems[currentIndex].amount = cartItems[currentIndex].amount + 1;
-        setCartItems([...cartItems]);
+        updateCartItems([...cartItems]);
       }
     }
   }, []);
@@ -45,7 +45,7 @@ export const CartItemCard: React.FC<Props> = ({ product }) => {
 
       if (currentItem) {
         cartItems[currentIndex].amount = cartItems[currentIndex].amount - 1;
-        setCartItems([...cartItems]);
+        updateCartItems([...cartItems]);
       }
     }
   }, []);

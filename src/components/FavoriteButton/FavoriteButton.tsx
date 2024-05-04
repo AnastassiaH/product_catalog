@@ -10,22 +10,22 @@ type Props = {
 
 export const FavoriteButton: React.FC<Props> = ({ product }) => {
   const { goods } = useContext(ProductsContext);
-  const { favoriteItems, setFavoriteItems } = useContext(FavoritesContext);
+  const { favoriteItems, updateFavoriteItems } = useContext(FavoritesContext);
 
   const newItem =
     "itemId" in product
       ? product
-      : goods?.filter((good) => good.itemId === product.id)[0];
+      : goods?.find((good) => good.itemId === product.id);
 
   const addToFavorites = () => {
     if (newItem) {
-      setFavoriteItems(favoriteItems ? [...favoriteItems, newItem] : [newItem]);
+      updateFavoriteItems(favoriteItems ? [...favoriteItems, newItem] : [newItem]);
     }
   };
 
   const removeFromFavorites = () => {
     if (favoriteItems && newItem) {
-      setFavoriteItems(
+      updateFavoriteItems(
         favoriteItems.filter((item) => item.itemId !== newItem.itemId)
       );
     }

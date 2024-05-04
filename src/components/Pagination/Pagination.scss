@@ -2,33 +2,6 @@
 @import "../../styles/fonts";
 @import "../../styles/mixins";
 
-.productsList {
-  display: flex;
-  flex-direction: row;
-  row-gap: 40px;
-  column-gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 24px;
-
-  @include on-tablet {
-    margin-bottom: 40px;
-  }
-}
-
-.productsList::after {
-  @include on-tablet {
-    content: "";
-    flex: auto;
-  }
-}
-
-.itemCard {
-  max-width: 288px;
-  width: 229px;
-  flex-grow: 1;
-}
-
 .pagination {
   display: flex;
   justify-content: center;

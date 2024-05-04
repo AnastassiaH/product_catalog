@@ -23,29 +23,25 @@ export const ProductDetailsPage: React.FC = () => {
   const itemId = pathname.split("/")[2];
 
   useEffect(() => {
-    let getData;
-    switch (category) {
-      case "phones":
-        getData = getPhones;
-        break;
-      case "tablets":
-        getData = getTablets;
-        break;
-      case "accessories":
-        getData = getAccessories;
-        break;
-      default:
-        break;
-    }
+    setIsLoading(true);
 
-    if (getData) {
-      setIsLoading(true);
-      getData()
+    const data =
+      category === "phones"
+        ? getPhones()
+        : category === "tablets"
+        ? getTablets()
+        : category === "accessories"
+        ? getAccessories()
+        : null;
+
+    if (data) {
+      data
         .then((goods: ProductDetailed[]) => {
           setCategoryGoods(goods);
-          const product = goods.filter((good) => good.id === itemId)[0];
+          const product = goods.find((good) => good.id === itemId);
           setProduct(product);
-        }).catch((e) => {
+        })
+        .catch((e) => {
           throw new Error();
         })
         .finally(() => setIsLoading(false));
@@ -160,7 +156,9 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.about}>
                 <h3 className={styles.infoTitle}>About</h3>
                 {product?.description.map((item) => (
-                  <p key={item.title} className={styles.aboutDescription}>{item.text[0]}</p>
+                  <p key={item.title} className={styles.aboutDescription}>
+                    {item.text[0]}
+                  </p>
                 ))}
               </div>
               <div className={styles.techSpecs}>
