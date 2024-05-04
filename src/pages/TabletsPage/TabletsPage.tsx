@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { Product } from "../../types";
 import { Breadcrumbs } from "../../components/BreadCrumbs";
 import { ProductsContext } from "../../context/ProductsContext";
-import { getProducts } from "../../services/products";
+import { fetchProducts } from "../../services/products";
 import { Loader } from "../../components/Loader";
 import styles from "./TabletsPage.module.scss";
 import { PaginatedItems } from "../../components/PaginatedItems/PaginatedItems";
@@ -20,10 +20,10 @@ export const TabletsPage: React.FC = () => {
   const perPage = searchParams.get("perPage");
 
   useEffect(() => {
-    if (!goods) {
+    if (!goods?.length) {
       setIsLoading(true);
-      getProducts()
-        .then(updateGoods)
+      fetchProducts()
+        .then((data) => updateGoods(data as Product[]))
         .catch((e) => {
           throw new Error;
         })
@@ -32,7 +32,7 @@ export const TabletsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (goods) {
+    if (goods?.length) {
       setTablets(goods.filter((good) => good.category === "tablets"));
     }
   }, [goods]);

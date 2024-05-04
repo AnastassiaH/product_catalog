@@ -6,12 +6,12 @@ import { getAccessories } from "../../services/accessories";
 import { ProductDetailed } from "../../types";
 import { Loader } from "../../components/Loader";
 import { Breadcrumbs } from "../../components/BreadCrumbs";
-import styles from "./ProductDetailsPage.module.scss";
 import { ProductsSlider } from "../../components/ProductsSlider";
 import { Footer } from "../../components/Footer";
 import { BackButton } from "../../components/BackButton";
 import { AddToCartButton } from "../../components/AddToCartButton";
 import { FavoriteButton } from "../../components/FavoriteButton";
+import styles from "./ProductDetailsPage.module.scss";
 
 export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,14 +46,14 @@ export const ProductDetailsPage: React.FC = () => {
           const product = goods.filter((good) => good.id === itemId)[0];
           setProduct(product);
         }).catch((e) => {
-          throw new Error;
+          throw new Error();
         })
         .finally(() => setIsLoading(false));
     }
   }, []);
 
   useEffect(() => {
-    const product = categoryGoods?.filter((good) => good.id === itemId)[0];
+    const product = categoryGoods?.find((good) => good.id === itemId);
     setProduct(product);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [itemId]);

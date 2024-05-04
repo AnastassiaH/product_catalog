@@ -8,7 +8,7 @@ import React, {
 import { NavLink } from "react-router-dom";
 import { PicturesSlider } from "../../components/PicturesSlider";
 import { ProductsContext } from "../../context/ProductsContext";
-import { getProducts } from "../../services/products";
+import { fetchProducts } from "../../services/products";
 import { ProductsSlider } from "../../components/ProductsSlider";
 import { Product } from "../../types";
 import styles from "./HomePage.module.scss";
@@ -20,25 +20,18 @@ export const HomePage: React.FC = () => {
   const categoryTablets = `${process.env.PUBLIC_URL}/img/category-tablets.png`;
   const categoryAccessories = `${process.env.PUBLIC_URL}/img/category-accessories.png`;
 
-  const fetchData = useCallback(async () => {
-    const data = await getProducts();
-    if (data && data?.length) {
-      return data;
-    }
-  }, []);
-
   useEffect(() => {
     if (!goods || !goods?.length) {
       setIsLoading(true);
 
-      fetchData()
+      fetchProducts()
         .then((data) => updateGoods(data as Product[]))
         .catch((e) => {
           throw new Error();
         })
         .finally(() => setIsLoading(false));
     }
-  }, [fetchData, goods, updateGoods]);
+  }, [goods, updateGoods]);
 
   const brandNewGoods = useMemo(
     () =>
