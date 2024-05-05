@@ -41,8 +41,8 @@ export const ProductList: React.FC<ProductListProps> = ({
     <>
       <div className={styles.productsList}>
         {currentItems &&
-          currentItems.map((item: Product) => (
-            <div className={styles.itemCard} key={item.id}>
+          currentItems.map((item: Product, idx: number) => (
+            <div className={styles.itemCard} key={`${item.id}-${idx}`}>
               <ProductCard product={item} />
             </div>
           ))}

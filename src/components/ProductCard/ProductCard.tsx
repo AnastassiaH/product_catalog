@@ -17,6 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const titleHeight = "image" in product ? "63px" : "42px";
   const id = "itemId" in product ? product.itemId : product.id;
   const category = "category" in product ? product.category : null;
+
   return (
     <div className={styles.container}>
       {category ? (

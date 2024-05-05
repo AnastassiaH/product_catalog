@@ -3,28 +3,29 @@
 @import "../../styles/mixins";
 
 .productsList {
-  display: flex;
-  flex-direction: row;
-  row-gap: 40px;
-  column-gap: 16px;
-  flex-wrap: wrap;
+  display: grid;
+  justify-items: center;
   justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+  column-gap: 16px;
+  row-gap: 40px;
   margin-bottom: 24px;
-
-  @include on-tablet {
-    margin-bottom: 40px;
-  }
-}
-
-.productsList::after {
-  @include on-tablet {
-    content: "";
-    flex: auto;
-  }
 }
 
 .itemCard {
+  display: flex;
+  width: 100%;
   max-width: 288px;
-  width: 229px;
-  flex-grow: 1;
+  min-width: 229px;
+}
+
+@media (min-width: 506px) and (max-width: 944px) {
+  .itemCard:nth-child(odd)  {
+    margin-left: auto;
+  }
+
+  .itemCard:nth-child(even) {
+    margin-right: auto;
+  }
 }
