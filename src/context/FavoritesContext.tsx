@@ -6,17 +6,17 @@ type Props = {
 };
 
 type ContextType = {
-  favoriteItems: Product[] | null;
+  favoriteItems: Product[];
   updateFavoriteItems: (values: Product[]) => void;
 };
 
 export const FavoritesContext = React.createContext<ContextType>({
-  favoriteItems: null,
+  favoriteItems: [],
   updateFavoriteItems: () => {},
 });
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
-  const [favoriteItems, setFavoriteItems] = useState<Product[] | null>(null);
+  const [favoriteItems, setFavoriteItems] = useState<Product[]>([]);
 
   const updateFavoriteItems = useCallback((data: Product[]) => {
     if (data) {

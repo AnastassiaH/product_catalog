@@ -29,7 +29,7 @@ const App: React.FC = () => {
   }, [cartItems]);
 
   useEffect(() => {
-    if (favoriteItems) {
+    if (favoriteItems.length > 0) {
       localStorage.setItem("favoriteItems", JSON.stringify(favoriteItems));
     }
   }, [favoriteItems]);

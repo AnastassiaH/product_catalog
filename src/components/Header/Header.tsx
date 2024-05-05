@@ -132,9 +132,9 @@ export const Header: React.FC = () => {
             }
           >
             <span className={`${styles.icon} ${styles["icon--heart"]}`}>
-              {favoriteItems?.length && (
+              {favoriteItems.length > 0 && (
                 <span className={styles.cartItemsAmount}>
-                  {favoriteItems?.length}
+                  {favoriteItems.length}
                 </span>
               )}
             </span>

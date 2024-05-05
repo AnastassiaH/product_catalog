@@ -11,15 +11,24 @@ export const FavoritesPage: React.FC = () => {
     <div className={styles.container}>
       <Breadcrumbs />
       <h1 className={styles.title}>Favorites</h1>
-      <p className={styles.amount}>{favoriteItems?.length} models</p>
-      <div className={styles.productsList}>
-        {favoriteItems &&
-          favoriteItems.map((item: Product) => (
-            <div className={styles.itemCard} key={item.id}>
-              <ProductCard product={item} />
-            </div>
-          ))}
-      </div>
+      {favoriteItems.length > 0 ? (
+        <>
+          <p className={styles.amount}>{favoriteItems?.length} models</p>
+          <div className={styles.productsList}>
+            {favoriteItems.map((item: Product) => (
+              <div className={styles.itemCard} key={item.id}>
+                <ProductCard product={item} />
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <p className={styles.emptyMessage}>
+            You don't have favorite items yet
+          </p>
+        </>
+      )}
     </div>
   );
 };
