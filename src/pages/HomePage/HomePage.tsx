@@ -3,7 +3,6 @@ import React, {
   useContext,
   useMemo,
   useState,
-  useCallback,
 } from "react";
 import { NavLink } from "react-router-dom";
 import { PicturesSlider } from "../../components/PicturesSlider";
