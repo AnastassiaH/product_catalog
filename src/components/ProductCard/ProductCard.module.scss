@@ -1,5 +1,6 @@
 @import "../../styles/vars";
 @import "../../styles/fonts";
+@import '../../styles/mixins';
 
 .container {
   width: 100%;
@@ -8,7 +9,8 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  //margin: 0 auto;
+
+  @include hover (border-color, $primary);
 
   .productLink {
     text-decoration: none;

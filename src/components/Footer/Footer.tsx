@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
         </ul>
       </nav>
       <div className={styles.backToTopBlock}>
-        <p className={styles.backToTop}>Back to top</p>
+        <p onClick={handleScrollToTop} className={styles.backToTop}>Back to top</p>
         <button
           className={styles.backToTopButton}
           onClick={handleScrollToTop}

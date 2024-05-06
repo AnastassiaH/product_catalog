@@ -55,6 +55,8 @@
     color: $secondary;
     text-decoration: none;
     cursor: pointer;
+
+    @include hover (color, $primary);
   }
 
   .backToTopBlock {
@@ -63,13 +65,15 @@
     align-items: center;
   }
 
-  .backToTop{
+  .backToTop {
     margin: 0;
     font-size: 12px;
     line-height: 16px;
     color: $secondary;
     font-family: Mont-Regular, sans-serif;
     margin-right: 16px;
+    cursor: pointer;
+    @include hover (color, $primary);
   }
 
   .backToTopButton {
@@ -82,5 +86,7 @@
     background-image: url(../../../public/img/icons/icon-arrow-up.svg);
     background-repeat: no-repeat;
     background-position: center;
+
+    @include hover (border-color, $primary);
   }
 }

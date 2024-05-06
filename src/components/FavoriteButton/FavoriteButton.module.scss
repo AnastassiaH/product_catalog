@@ -1,5 +1,6 @@
 @import "../../styles/vars";
 @import "../../styles/fonts";
+@import "../../styles/mixins";
 
 .favoriteButton,
 .favorited {
@@ -12,6 +13,8 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+
+  @include hover (border-color, $primary);
 }
 
 .favorited {

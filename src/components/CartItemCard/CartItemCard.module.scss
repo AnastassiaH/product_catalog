@@ -58,8 +58,11 @@
   background-color: transparent;
   border: none;
   background-position: center;
+
   background-repeat: no-repeat;
   cursor: pointer;
+
+  @include hover (background-image, url(../../../public/img/icons/icon-close-primary.svg));
 }
 
 .decrease,
@@ -73,6 +76,8 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+
+  @include hover (border-color, $primary);
 }
 
 .increase {
