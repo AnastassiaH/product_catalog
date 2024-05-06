@@ -29,3 +29,10 @@
     margin-right: auto;
   }
 }
+
+@media (min-width: 948px) and (max-width: 1012px) {
+  .productsList {
+    max-width: 899px;
+    margin: 0 auto;
+  }
+}
