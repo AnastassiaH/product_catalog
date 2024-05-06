@@ -71,8 +71,9 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
-        <PicturesSlider />
+        <h1 hidden>Product Catalog</h1>
+        <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+        <PicturesSlider/>
       </div>
       <div className={styles["brand-new-container"]}>
         <h2 className={styles["brand-new-title"]}>Brand new models</h2>
