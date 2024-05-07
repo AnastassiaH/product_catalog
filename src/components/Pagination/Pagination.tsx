@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import ReactPaginate from "react-paginate";
 import "./Pagination.scss";
 
@@ -23,8 +23,8 @@ export const Pagination: React.FC<Props> = ({
       pageCount={pageCount}
       previousLabel=" "
       renderOnZeroPageCount={null}
-      marginPagesDisplayed={1}
-      pageRangeDisplayed={2}
+      marginPagesDisplayed={0}
+      pageRangeDisplayed={4}
       containerClassName="pagination"
       pageClassName="pageNumber"
       pageLinkClassName="pageLink"
