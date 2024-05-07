@@ -90,6 +90,7 @@
 
 .decrease:disabled {
   background-image: url(../../../public/img/icons/minus-icon-disabled.svg);
+  @include hover (border-color, $elements);
 }
 
 .cartItemImage {
