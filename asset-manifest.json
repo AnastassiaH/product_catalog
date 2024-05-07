@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/product_catalog/static/css/main.adac607b.css",
-    "main.js": "/product_catalog/static/js/main.a11626e7.js",
+    "main.js": "/product_catalog/static/js/main.1590dc1b.js",
     "static/media/Mont-Regular.otf": "/product_catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product_catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product_catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
@@ -25,14 +25,14 @@
     "static/media/icon-left.svg": "/product_catalog/static/media/icon-left.883e600daa9abd3adf4d.svg",
     "static/media/icon-right-disabled.svg": "/product_catalog/static/media/icon-right-disabled.d9de570f078e3380cab0.svg",
     "static/media/icon-right.svg": "/product_catalog/static/media/icon-right.27ea79700e177cccd9a1.svg",
+    "index.html": "/product_catalog/index.html",
     "static/media/minus-icon-disabled.svg": "/product_catalog/static/media/minus-icon-disabled.4b7c4fa33c66c0b35185.svg",
     "static/media/minus-icon.svg": "/product_catalog/static/media/minus-icon.60fd3f6514ad8fda3180.svg",
-    "index.html": "/product_catalog/index.html",
     "main.adac607b.css.map": "/product_catalog/static/css/main.adac607b.css.map",
-    "main.a11626e7.js.map": "/product_catalog/static/js/main.a11626e7.js.map"
+    "main.1590dc1b.js.map": "/product_catalog/static/js/main.1590dc1b.js.map"
   },
   "entrypoints": [
     "static/css/main.adac607b.css",
-    "static/js/main.a11626e7.js"
+    "static/js/main.1590dc1b.js"
   ]
 }
